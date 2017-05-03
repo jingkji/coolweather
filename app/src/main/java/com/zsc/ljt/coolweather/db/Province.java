@@ -8,9 +8,9 @@ import org.litepal.crud.DataSupport;
 
 public class Province extends DataSupport {
 
-    private int id;
-    private String provinceName;
-    private int provinceCode;
+    private int id;                 // 该实体类的id，该id代表Province
+    private String provinceName;    // 省的名字，对应JSON数据的"name"
+    private int provinceCode;       // 省的代号，对应JSON数据的"id"
 
     public int getId() {
         return id;
