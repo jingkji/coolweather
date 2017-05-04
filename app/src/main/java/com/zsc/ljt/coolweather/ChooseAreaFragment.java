@@ -1,6 +1,7 @@
 package com.zsc.ljt.coolweather;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.zsc.ljt.coolweather.db.City;
 import com.zsc.ljt.coolweather.db.County;
 import com.zsc.ljt.coolweather.db.Province;
+import com.zsc.ljt.coolweather.gson.Weather;
 import com.zsc.ljt.coolweather.util.HttpUtil;
 import com.zsc.ljt.coolweather.util.Utility;
 
@@ -79,6 +81,12 @@ public class ChooseAreaFragment extends Fragment {
                 } else if (currentLevel == LEVEL_CITY) {
                     selectedCity = cityList.get(position);
                     queryCounties();
+                } else if (currentLevel == LEVEL_COUNTY) {
+                    String weatherId = countyList.get(position).getWeatherId();
+                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    intent.putExtra("weather_id", weatherId);
+                    startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });
